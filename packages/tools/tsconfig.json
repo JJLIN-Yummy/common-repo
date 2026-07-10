@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noEmit": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "include": [
+    "src/**/*",
+    "*.config.ts",
+    "types/**/*.d.ts", // types目录下所有类型声明文件
+    "types/**/*.ts" // types目录下所有TS文件
+  ],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+}
