@@ -4,8 +4,8 @@ export function isArray(value: unknown): value is Array<any> {
   return Array.isArray(value);
 }
 
-export function isEmptyArray(value: unknown): value is [] {
-  if (!isArray(value)) {
+export function isEmptyArray(value: unknown): value is Array<never> {
+  if (!Array.isArray(value)) {
     throw throwTypeError('value', value);
   }
   return value.length === 0;
