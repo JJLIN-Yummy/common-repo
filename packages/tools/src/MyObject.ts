@@ -29,7 +29,7 @@ type AnyFunction = (...args: unknown[]) => unknown;
 
 /**
  * 判斷是否為函數
- * @param cb
+ * @param value
  * @returns
  */
 export function isFunction(value: unknown): value is AnyFunction {
@@ -44,6 +44,7 @@ export function isAsyncFunction(cb: unknown): cb is (...args: unknown[]) => Prom
 /**
  * 深拷貝對象
  * @param source
+ * @param hash
  * @returns
  */
 export function deepClone<T>(source: T, hash = new WeakMap<object, unknown>()): T {

@@ -31,7 +31,7 @@ const RequestPromiseProxy = <R>(
     })
     .catch((err) => {
       //处理响应原生错误
-      const { response, code } = err ?? {};
+      const { _response, code } = err ?? {};
       setFlags({ error: err });
       errorInterceptor(err);
       if (code !== 'ERR_CANCELED') {
