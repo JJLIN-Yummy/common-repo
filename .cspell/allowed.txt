@@ -4,3 +4,6 @@ ISSUCCESS
 uuidv
 mts
 REREQUES
+iid
+TSTATE
+umi
