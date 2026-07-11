@@ -1,0 +1,24 @@
+{
+  "name": "@common/request",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint:eslint": "eslint .",
+    "lint:eslint:fix": "eslint . --fix",
+    "cspell": "cspell lint **/*.{js,ts,tsx,vue} --no-must-find-files"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0",
+  "dependencies": {
+    "axios": "^1.18.0",
+    "@common/tools": "workspace: *"
+  }
+}
