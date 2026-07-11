@@ -1,0 +1,9 @@
+packages:
+  # all packages in direct subdirs of packages/
+  - 'packages/*'
+  - 'sharedType/*'
+  - 'test/*'
+  
+  # exclude packages that are inside b directories
+  #- '!**/A/**'
+  - '!**/node_modules'
