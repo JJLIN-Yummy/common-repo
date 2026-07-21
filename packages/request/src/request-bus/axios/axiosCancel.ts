@@ -1,5 +1,4 @@
 import type { Canceler } from 'axios';
-import qs from 'qs';
 
 import { isFunction } from '@common/tools';
 import { useGlobSetting } from '@/setting';
@@ -22,8 +21,8 @@ export const getPendingUrl = (config: configType) => {
     config.fetchId,
     config.method,
     config.url?.includes(apiUrl) ? config.url : apiUrl + config.url,
-    qs.stringify(config.data),
-    qs.stringify(config.params),
+    JSON.stringify(config.data),
+    JSON.stringify(config.params),
   ].join('&');
 };
 

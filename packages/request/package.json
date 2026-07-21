@@ -1,11 +1,12 @@
 {
   "name": "@common/request",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -13,12 +14,22 @@
     "lint:eslint:fix": "eslint . --fix",
     "cspell": "cspell lint **/*.{js,ts,tsx,vue} --no-must-find-files"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.8.0",
   "dependencies": {
-    "axios": "^1.18.0",
-    "@common/tools": "workspace: *"
+    "@common/tools": "^1.0.0",
+    "axios": "^1.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3"
   }
 }
