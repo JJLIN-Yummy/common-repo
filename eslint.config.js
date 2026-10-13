@@ -7,7 +7,9 @@ export default [
       'node_modules/**',
       // 新增：全局忽略根目录所有vite配置ts，不参与类型规则校验
       './vite.config*.ts',
-      './test*.ts',
+      '**/*.test.ts',
+      '**/*.spec.ts',
+      '**/__tests__/**',
       './build/**',
     ],
   },

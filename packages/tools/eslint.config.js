@@ -3,7 +3,15 @@ import tseslint from 'typescript-eslint';
 
 export default [
   {
-    ignores: ['node_modules/**', 'vite.config*.ts', 'test*.ts', 'build/**', '*.config.ts'],
+    ignores: [
+      'node_modules/**',
+      'vite.config*.ts',
+      '**/*.test.ts',
+      '**/*.spec.ts',
+      '**/__tests__/**',
+      'build/**',
+      '*.config.ts',
+    ],
   },
   ...es,
   ...tseslint.configs.recommended,
@@ -33,6 +41,7 @@ export default [
       '@typescript-eslint/no-redundant-type-constituents': 'off',
       '@typescript-eslint/no-floating-promises': 'off',
       '@typescript-eslint/unbound-method': 'off',
+      '@typescript-eslint/require-await': 'off',
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'warn',

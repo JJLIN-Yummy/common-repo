@@ -24,13 +24,13 @@ app.use((req, res, next) => {
 });
 
 // 业务接口不用再手动写跨域头
-app.get('/user', (req, res) => {
+app.get('/user', (_req, res) => {
   const t = new Date().getTime();
   while (new Date().getTime() - t < 1000) {}
-  res.status(500);
+  res.status(200);
   return res.send({ code: 500, data: 'ok', message: 'ok' });
 });
 
 app.listen(3000, () => {
-  console.log('Server started on port 3000');
+  // console.log('Server started on port 3000');
 });

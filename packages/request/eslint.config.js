@@ -3,7 +3,15 @@ import tseslint from 'typescript-eslint';
 
 export default [
   {
-    ignores: ['node_modules/**', 'vite.config*.ts', 'test*.ts', 'build/**', 'dist/**'],
+    ignores: [
+      'node_modules/**',
+      'vite.config*.ts',
+      '**/*.test.ts',
+      '**/*.spec.ts',
+      '**/__tests__/**',
+      'build/**',
+      'dist/**',
+    ],
   },
   ...es,
   ...tseslint.configs.recommended,
@@ -21,6 +29,7 @@ export default [
   {
     files: ['src/**/*.{js,ts,tsx,mts,cts,vue}'],
     rules: {
+      '@typescript-eslint/require-await': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',

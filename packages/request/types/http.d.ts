@@ -30,3 +30,5 @@ export type promiseCatchDataType = {
   data: null;
   error: Error | responseErrorType;
 };
+
+export type EmptyObj = Record<string, never>;

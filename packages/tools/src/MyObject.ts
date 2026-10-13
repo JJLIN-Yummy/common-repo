@@ -36,11 +36,6 @@ export function isFunction(value: unknown): value is AnyFunction {
   return typeof value === 'function';
 }
 
-export function isAsyncFunction(cb: unknown): cb is (...args: unknown[]) => Promise<unknown> {
-  if (!isFunction(cb)) return false;
-  return cb.constructor.name === 'AsyncFunction';
-}
-
 /**
  * 深拷貝對象
  * @param source
@@ -221,3 +216,10 @@ export function isObjectContains(a: unknown, b: unknown): boolean {
     return isObjectContains(objA[key], valB);
   });
 }
+
+/**
+ * 判断是不是异步函数
+ */
+export const isAsyncFunction = (fn: (...args: any[]) => any) => {
+  return fn && Object.prototype.toString.call(fn) === '[object AsyncFunction]';
+};
