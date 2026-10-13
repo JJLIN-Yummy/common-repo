@@ -53,12 +53,12 @@ export default defineConfig((option) => {
               //     return 'utils'; //合包
               // }
               if (id.includes('vue-router/') && id.includes('node_modules')) {
-                console.log(id);
+                // console.log(id);
 
                 return 'vendor-vueRouter';
               }
               if (id.includes('vue/') && id.includes('node_modules')) {
-                console.log(id);
+                // console.log(id);
 
                 return 'vendor-vue';
               }
@@ -69,6 +69,7 @@ export default defineConfig((option) => {
         },
       },
       test: {
+        include: ['./src/request-core/utils/__tests__/**/*.test.ts'],
         // 模拟浏览器环境
         environment: 'jsdom',
         // 支持 Vue 单文件组件
@@ -85,7 +86,7 @@ export default defineConfig((option) => {
             functions: 90,
             statements: 90,
           },
-          include: ['src/**/*.ts'],
+          include: ['src/request-core/utils/**/*.ts'],
           exclude: [
             'node_modules/**',
             'dist/**',

@@ -1,14 +1,16 @@
 {
   "name": "@common/tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.cjs",
   "type": "module",
   "module": "./dist/index.js",
   "scripts": {
+    "dev": "tsup src/index.ts --watch --onSuccess \"node dist/index.js\"",
     "build": "tsup",
     "lint:eslint": "eslint .",
-    "lint:eslint:fix": "eslint . --fix"
+    "lint:eslint:fix": "eslint . --fix",
+    "test": "vitest run"
   },
   "exports": {
     ".": {

@@ -1,9 +1,10 @@
 {
   "name": "@common/request",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "type": "module",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "tsup",
@@ -26,7 +27,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.8.0",
   "dependencies": {
-    "@common/tools": "^1.0.0",
+    "@common/tools": "^1.0.2",
     "axios": "^1.18.0"
   },
   "devDependencies": {
