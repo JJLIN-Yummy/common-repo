@@ -227,7 +227,9 @@ export class LogicalError extends AppError {
 /* -------------------------------------------------------------------------- */
 
 export function isAppError(e: unknown): e is AppError {
-  return e instanceof AppError;
+  return (
+    typeof e === 'object' && e !== null && 'code' in e && typeof (e as AppError).code === 'string'
+  );
 }
 
 export function hasCode(e: unknown, code: ErrorCode): boolean {

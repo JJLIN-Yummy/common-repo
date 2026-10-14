@@ -489,7 +489,7 @@ describe('Scheduler', () => {
 
     it('windowMax 小数 → 按你的规则处理', () => {
       // 如果没校验小数，这里能构造；有校验则抛错
-      expect(() => new Scheduler({ windowMax: 1.5 })).not.toThrow();
+      expect(() => new Scheduler({ windowMax: 1.5 })).toThrow();
     });
   });
 
