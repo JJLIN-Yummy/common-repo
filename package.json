@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-  "module": "true",
   "private": true,
   "scripts": {
     "husky:init": "pnpm exec husky install",

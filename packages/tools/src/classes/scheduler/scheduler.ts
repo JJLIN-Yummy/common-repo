@@ -2,7 +2,9 @@ import { type taskType } from './task';
 import { isFunction, isPromise } from '../../MyObject';
 import { isArray } from '../../MyArray';
 import {
+  ErrorCode,
   ErrorMessage,
+  isAppError,
   LogicalError,
   ReentrantError,
   RetryExhaustedError,
@@ -36,6 +38,9 @@ export class Scheduler {
   constructor(private option: optionType) {
     if (this.option.windowMax <= 0) {
       throw new LogicalError({ message: 'windowMax必须大于0' });
+    }
+    if (!Number.isInteger(this.option.windowMax) || this.option.windowMax <= 0) {
+      throw new LogicalError({ message: 'windowMax 必须是正整数' });
     }
   }
 
@@ -146,7 +151,7 @@ export class Scheduler {
                 this.safeCall(task.onSuccess, res);
               })
               .catch((err) => {
-                if (err instanceof TimeoutError) {
+                if (isAppError(err) && err.code === ErrorCode.TIMEOUT) {
                   this.safeCall(task.onTimeout, err);
                 } else {
                   this.safeCall(task.onError, err);
@@ -160,7 +165,7 @@ export class Scheduler {
             finishedHook({ queue: this.queue, task, run: this.run.bind(this) });
           }
         } catch (err) {
-          if (err instanceof TimeoutError) {
+          if (isAppError(err) && err.code === ErrorCode.TIMEOUT) {
             this.safeCall(task.onTimeout, err);
           } else {
             this.safeCall(task.onError, err);
