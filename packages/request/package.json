@@ -2,9 +2,10 @@
   "name": "@common/request",
   "version": "1.0.5",
   "description": "",
-  "main": "index.js",
   "type": "module",
-  "private": true,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsup",
@@ -23,7 +24,7 @@
     }
   },
   "keywords": [],
-  "author": "",
+  "author": "jialiang li",
   "license": "ISC",
   "packageManager": "pnpm@10.8.0",
   "dependencies": {

@@ -16,7 +16,7 @@
     "pub": "changeset publish"
   },
   "keywords": [],
-  "author": "",
+  "author": "jialiang li",
   "license": "ISC",
   "packageManager": "pnpm@10.8.0",
   "devDependencies": {
