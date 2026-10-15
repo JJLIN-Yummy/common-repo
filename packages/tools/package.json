@@ -2,9 +2,10 @@
   "name": "@common/tools",
   "version": "1.0.3",
   "description": "",
-  "main": "index.cjs",
   "type": "module",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "tsup src/index.ts --watch --onSuccess \"node dist/index.js\"",
     "build": "tsup",
@@ -20,7 +21,7 @@
     }
   },
   "keywords": [],
-  "author": "",
+  "author": "jialiang li",
   "license": "ISC",
   "packageManager": "pnpm@10.8.0"
 }

@@ -69,7 +69,7 @@ export default defineConfig((option) => {
         },
       },
       test: {
-        include: ['./src/request-core/utils/__tests__/**/*.test.ts'],
+        include: ['./src/**/*.{test,spec}.ts'],
         // 模拟浏览器环境
         environment: 'jsdom',
         // 支持 Vue 单文件组件
@@ -86,7 +86,7 @@ export default defineConfig((option) => {
             functions: 90,
             statements: 90,
           },
-          include: ['src/request-core/utils/**/*.ts'],
+          include: ['src/**/*.ts'],
           exclude: [
             'node_modules/**',
             'dist/**',

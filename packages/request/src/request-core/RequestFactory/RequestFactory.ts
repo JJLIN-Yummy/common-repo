@@ -6,7 +6,11 @@ import {
   throwTypeError,
   isObjectContains,
 } from '@common/tools';
-import type { RequestCore, requestOption } from '@/request-core/RequestFactory/types';
+import type {
+  RequestCore,
+  RequestCoreOptionsType,
+  requestOption,
+} from '@/request-core/RequestFactory/types';
 
 import { ResultEnum } from '@/enums/httpEnum';
 
@@ -125,7 +129,7 @@ export default class RequestFactory<
   private id: number | string;
   private http: RequestCore;
   private config: configType = {};
-  private options: object = {};
+  private options: RequestCoreOptionsType = {};
   private baseConfigFunc: baseConfigFuncType<P, Q, D> | undefined = void 0;
   private state: string = PENDING;
   private manager: IRequestFactoryInstanceManager<R>;
@@ -172,7 +176,7 @@ export default class RequestFactory<
   //收集数据
   public collectData(
     baseConfig: baseConfigFuncType<P, Q, D>,
-    options: object = {}
+    options: RequestCoreOptionsType = {}
   ): IsRequireData<P, Q, D> extends true
     ? (reqData: paramsType<P, Q, D>) => IRequestFactory<R>
     : (reqData?: paramsType<P, Q, D>) => IRequestFactory<R> {
