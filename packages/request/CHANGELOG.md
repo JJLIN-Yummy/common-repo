@@ -1,5 +1,23 @@
 # @common/request
 
+## 1.0.8
+
+### Patch Changes
+
+- fix responseType to R
+
+## 1.0.7
+
+### Patch Changes
+
+- fix requestFactory response type
+
+## 1.0.6
+
+### Patch Changes
+
+- fix bug
+
 ## 1.0.5
 
 ### Patch Changes

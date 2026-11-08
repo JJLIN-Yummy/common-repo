@@ -1,5 +1,4 @@
 import { type IRequestFactory } from '@/request-core/RequestFactory/RequestFactory';
-import { type responseType } from '#/http.d';
 import {
   apiCacheMap,
   deepClone,
@@ -13,7 +12,7 @@ import { type IApiCacheMap, isArray } from '@common/tools';
 import { concurRequests, type concurRequestsType } from '@/request-core/utils/concurRequests';
 import { isRequestCancelError } from '@/__tests__/utils/is';
 
-export interface IRequestFactoryInstanceManager<R extends responseType> {
+export interface IRequestFactoryInstanceManager<R> {
   add: (iid: number | string, instance: IRequestFactory<R>) => void;
   remove: (id: number | string) => void;
   runRequest: (
@@ -234,8 +233,8 @@ class RequestEmitMap implements IRequestEmitMap {
  * 5.如果done=false,waiting=true，直接将请求任务放进队列即可。
  * 6.两个相同类型的请求，先后发出，若第一个被取消，应该走reject
  */
-export class RequestFactoryInstanceManager implements IRequestFactoryInstanceManager<responseType> {
-  public instanceMap: Map<number | string, IRequestFactory<responseType>>;
+export class RequestFactoryInstanceManager<R> implements IRequestFactoryInstanceManager<R> {
+  public instanceMap: Map<number | string, IRequestFactory<R>>;
   public apiStorage: IApiCacheMap;
   public requestEmitMap: IRequestEmitMap;
   public emitter: ReturnType<concurRequestsType>['emitter'];
@@ -248,7 +247,7 @@ export class RequestFactoryInstanceManager implements IRequestFactoryInstanceMan
   }
 
   //===================实例========================
-  add(id: number | string, instance: IRequestFactory<responseType>) {
+  add(id: number | string, instance: IRequestFactory<R>) {
     if (!this.instanceMap.get(id)) {
       this.instanceMap.set(id, instance);
     }

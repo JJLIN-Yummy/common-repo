@@ -45,7 +45,7 @@ export type pluginItemType = {
   fetchError?: () => { once: boolean } | undefined;
 };
 
-export interface IRequestFactory<R extends responseType> {
+export interface IRequestFactory<R = responseType> {
   response: (option?: { id?: number | string }) => Promise<promiseDataType<R>>;
   createPlugin: (option: pluginItemType) => IRequestFactory<R>;
   cache: (option: { duration?: number }, flag: boolean) => IRequestFactory<R>;
@@ -86,7 +86,7 @@ type paramsType<
 //   data?: D
 // }
 
-export interface RequestOption<R extends responseType> {
+export interface RequestOption<R = responseType> {
   id: number | string;
   http: RequestCore;
   manager: IRequestFactoryInstanceManager<R>;
@@ -122,7 +122,7 @@ export default class RequestFactory<
   P extends Record<string, any> = EmptyObj,
   Q extends Record<string, any> = EmptyObj,
   D extends Record<string, any> = EmptyObj,
-  R extends responseType = responseType,
+  R = responseType,
 > implements IRequestFactory<R> {
   private static globalPlugins: Array<pluginItemType> = [];
 
