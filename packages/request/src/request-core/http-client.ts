@@ -25,7 +25,7 @@ export const httpClient = (config: {
 
   RequestFactory.createGlobalPlugin(config.globalPlugins ?? []);
 
-  const RequestFactoryWrapper = <T extends requestType, R extends responseType>(option: {
+  const RequestFactoryWrapper = <T extends requestType, R = responseType>(option: {
     id: number | string;
   }) => {
     return new RequestFactory<T['params'], T['query'], T['data'], R>({
