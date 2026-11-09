@@ -322,17 +322,18 @@ export default class RequestFactory<
   public cancel(flag = true): RequestFactory<P, Q, D, R> {
     // this.isCancel = true;
     const canceler = new AxiosCanceler();
-    let lastConfig: configType = {};
+    let lastConfig: configType;
     this.componentState = this.componentState | CANCEL_STATE;
 
     const c = (option?: { id?: number | string }) => {
       if (lastConfig) {
         MyObject.assign(lastConfig, { fetchId: option?.id });
         // @ts-expect-error 类型修复
-        canceler.removePending(lastConfig);
+        canceler.removePending({ ...lastConfig });
       }
       if (this.config) {
         MyObject.assign(this.config, { fetchId: option?.id });
+        this.config.apiUrl = this.http.apiUrl;
         lastConfig = this.config;
         // @ts-expect-error 类型修复
         canceler.addPending(this.config);
@@ -350,11 +351,11 @@ export default class RequestFactory<
     const canceler = new AxiosCanceler();
     const config = this.config;
     // @ts-expect-error 类型修复
-    canceler.addPending(config);
+    canceler.addPending({ ...config, apiUrl: this.http.apiUrl });
 
     cb(() => {
       // @ts-expect-error 类型修复
-      return canceler.removePending(config);
+      return canceler.removePending({ ...config, apiUrl: this.http.apiUrl });
     });
     return this;
   }

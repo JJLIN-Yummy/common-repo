@@ -1,12 +1,9 @@
 import type { Canceler } from 'axios';
 
 import { isFunction } from '@common/tools';
-import { useGlobSetting } from '@/setting';
 
 // 声明一个 Map 用于存储每个请求的标识 和 取消函数
 let pendingMap = new Map<string, Canceler>();
-const globSetting = useGlobSetting();
-const apiUrl = globSetting.apiUrl || '';
 
 type configType = {
   url: string;
@@ -14,13 +11,14 @@ type configType = {
   data?: Record<string, any>;
   params?: Record<string, any>;
   signal?: AbortSignal;
+  apiUrl?: string;
 } & { fetchId: string };
 
 export const getPendingUrl = (config: configType) => {
   return [
     config.fetchId,
     config.method,
-    config.url?.includes(apiUrl) ? config.url : apiUrl + config.url,
+    config.url?.includes(config.apiUrl || '') ? config.url : config.apiUrl + config.url,
     JSON.stringify(config.data),
     JSON.stringify(config.params),
   ].join('&');

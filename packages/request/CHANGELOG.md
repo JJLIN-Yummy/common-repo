@@ -1,5 +1,11 @@
 # @common/request
 
+## 1.0.9
+
+### Patch Changes
+
+- fix(request): canceler token
+
 ## 1.0.8
 
 ### Patch Changes
